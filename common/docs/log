@@ -1,0 +1,14 @@
+심각: A child container failed during start
+java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/common]]
+-------------------------------------
+web.xml: servlet 2.5.0->3.1.0 으로 변경 : 효과 없음
+web.xml: <url-pattern>/*.cm</url-pattern> -> <url-pattern>/</url-pattern> 정상
+
+==========================================
+log4j:ERROR Could not parse url [file:
+com.sun.org.apache.xerces.internal.util.URI$MalformedURIException: Path contains invalid character:
+-------------------------------------
+폴더 경로 문제 및 xercesImpl 버전 문제
+pom.xml: ++ <artifactId>xercesImpl</artifactId>
+
+==========================================

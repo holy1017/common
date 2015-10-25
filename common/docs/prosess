@@ -1,0 +1,15 @@
+/common/src/main/webapp/WEB-INF/web.xml
+
+/common/src/main/webapp/WEB-INF/common/context/context-common.xml
+
+
+
+/common/src/main/webapp/WEB-INF/common/servlet/servlet-common.xml
+
+<url-pattern>/*.cm
+base-package="common"
+<annotation-driven />
+"/WEB-INF/common/jsp/"
+mapping="/resources/**"
+
+/common/src/main/webapp/WEB-INF/common/jsp/common.jsp

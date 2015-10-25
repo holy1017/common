@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/common/CommonController.java=UTF-8
+encoding//src/main/java/common/CommonDao.java=MS949
+encoding//src/main/java/defult/DefultController.java=UTF-8
+encoding//src/main/java/sample/SampleController.java=euc-kr
+encoding//src/main/java/sample/search/SearchController.java=UTF-8
+encoding/<project>=UTF-8
+separateDerivedEncodings=true

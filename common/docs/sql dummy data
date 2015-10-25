@@ -1,0 +1,14 @@
+-- 게시판 생성용
+BEGIN
+   FOR i IN 1 .. 1000
+   LOOP
+      INSERT INTO AUCTION_BOARD (B_TITLE,
+                                 B_CONTEXT,
+                                 U_NO,
+                                 B_NO)
+           VALUES (DBMS_RANDOM.STRING ('X', 90)||TO_CHAR(i),
+                   DBMS_RANDOM.STRING ('X', 4000),
+                   1,
+                   SEQ_BOARD_NUM.NEXTVAL);
+   END LOOP;
+END;

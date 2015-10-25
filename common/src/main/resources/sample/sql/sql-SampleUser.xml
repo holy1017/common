@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SampleUser">
+	<select
+		id="users"
+		parameterType="sample.SampleUser.SampleUserVO"
+		resultType="sample.SampleUser.SampleUserVO">
+		select u_no,
+		u_id,
+		u_nm,
+		u_nk,
+		u_pw,
+		u_dt
+		from sample_user
+		<where>
+			<if test="u_id != null">u_id = #{u_id}</if>
+			<if test="u_id != null">u_pw = #{u_pw}</if>
+			<if test="u_id != null">u_nk = #{u_nk}</if>
+		</where>
+	</select>
+	<!-- <select
+		id="searchSelectTest"
+		parameterType="int"
+		resultType="int">
+		SELECT
+		SYSDATE text
+		, ROUND(DBMS_RANDOM.VALUE(1, 45),0) num
+		FROM dual
+		</select>
+		<select
+		id="searchSelectList"
+		parameterType="string"
+		resultType="string">
+		SELECT
+		word, ROUND(DBMS_RANDOM.VALUE(1, 45),0) num
+		FROM word
+		<where>
+		<if test="value != null">word like #{word}||'%'</if>
+		</where>
+		</select> -->
+	<!--
+		<isNotNull prepend="AND" property="name">
+		name=#name#
+
+		where word like 'word'||'%'
+	-->
+	<!--
+		<select id="getDeptList2" parameterType="com.vo.DeptVO"
+		resultType="HashMap">
+		SELECT
+		deptno, dname, loc
+		FROM dept
+		</select>
+		<insert id="deptInsert" parameterType="com.vo.DeptVO">
+		INSERT INTO dept
+		VALUES(#{deptno},#{dname},#{loc})
+		</insert>
+		<update id="deptUpdate" parameterType="com.vo.DeptVO">
+		UPDATE dept SET
+		dname=#{dname}, loc=#{loc} where deptno = #{deptno}
+		</update>
+		<delete id="deptDelete" parameterType="com.vo.DeptVO">
+		DELETE FROM dept WHERE
+		deptno=#{deptno}
+		</delete> -->
+</mapper>
