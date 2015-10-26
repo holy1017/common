@@ -2,3 +2,5 @@
 1445786051678	Delete element
 1445827770427	Rename method 'insertBoard'
 1445834620021	Delete element
+1445838285274	Rename package 'common.CommandMap'
+1445838427503	Move 'LoggerInterceptor.java' to 'common'

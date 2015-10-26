@@ -4,16 +4,16 @@
 <mapper namespace="Board">
 	<select id="BoardList" parameterType="hashmap" resultType="hashmap">
         <![CDATA[
-            SELECT
-                IDX,
-                TITLE,
-                HIT_CNT,
-                CREA_DTM
-            FROM
-                TB_BOARD
-            WHERE
-                DEL_GB = 'N'
-            ORDER BY IDX DESC
+SELECT
+    IDX,
+    TITLE,
+    HIT_CNT,
+    CREA_DTM
+FROM
+    TB_BOARD
+WHERE
+    DEL_GB = 'N'    
+ORDER BY IDX DESC
         ]]>
 	</select>
 

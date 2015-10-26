@@ -1,6 +1,5 @@
 package sample.board;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service("BoardService")
 public class BoardService {
+	
     Logger log = Logger.getLogger(this.getClass());
     
     @Resource(name="BoardDAO")

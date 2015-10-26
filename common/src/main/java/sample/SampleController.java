@@ -6,11 +6,12 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 
-import javax.activation.CommandMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -29,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import common.CommonVO;
+import common.common.CommandMap;
 
 /**
  * 어노테이션 http://noritersand.tistory.com/156 Handles requests for the application
@@ -283,7 +285,9 @@ public class SampleController {
 	 * @param str
 	 * @return
 	 */
-	public String SHA256(String str) {
+	@RequestMapping(value = { "/SHA256/{str}" })
+	@ResponseBody
+	public String SHA256(@PathVariable String str) {
 		String SHA = "";
 		try {
 			MessageDigest sh = MessageDigest.getInstance("SHA-256");
@@ -306,26 +310,68 @@ public class SampleController {
 	// 제이슨 http://java.ihoney.pe.kr/283
 	// 제이슨 http://roqkffhwk.tistory.com/120
 
+	/**
+	 * 주소창에 직접 치면 안됨
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = { "/session" })
 	@ResponseBody
 	public String sessionTest(HttpSession session) {
+		
+		log.debug("session");
+		
 		session.setAttribute("sessiontest", "session test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return "session test!??";
 	}
+	/**
+	 * 주소창에 직접 치면 안됨
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = { "/formtest" })
 	@ResponseBody
 	public String formtest(HttpSession session) {
+		
+		log.debug("formtest");
+		
 		session.setAttribute("sessiontest", "session test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return "formtest";
 	}
+	
+	/**
+	 * 주소창에 직접 치면 안됨
+	 * @param session
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = { "/formfiletest" })
-	@ResponseBody
+	@ResponseBody//주소창에 직접 치면 안됨
 	public String formfiletest(HttpSession session, HttpServletRequest request) {
+		
+		log.debug("formfiletest");
+		
 		session.setAttribute("sessiontest", "session test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		svc.insertFile( request);
 		return "formfiletest";
 	}
 	
-
+	@RequestMapping(value="/testMapArgumentResolver")
+	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception{
+		
+		log.debug("testMapArgumentResolver");
+		
+	    ModelAndView mv = new ModelAndView("");
+	     
+	    if(commandMap.isEmpty() == false){
+	        Iterator<Entry<String,Object>> iterator = commandMap.getMap().entrySet().iterator();
+	        Entry<String,Object> entry = null;
+	        while(iterator.hasNext()){
+	            entry = iterator.next();
+	            log.debug("key : "+entry.getKey()+", value : "+entry.getValue());
+	        }
+	    }
+	    return mv;
+	}
 
 }

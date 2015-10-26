@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
+	
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Resource(name = "BoardService")
