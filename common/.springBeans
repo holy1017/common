@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.7.0.201506251244-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[3.7.1.201510041102-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+		<config>src/main/webapp/WEB-INF/common/context/context-orcl-test.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/sample/context/context-board-orcl.xml</config>
+		<config>src/main/webapp/WEB-INF/common/servlet/servlet-common.xml</config>
+		<config>src/main/webapp/WEB-INF/lightboard/servlet/servlet-defult.xml</config>
+		<config>src/main/webapp/WEB-INF/servlet/servlet-defult.xml</config>
+		<config>src/main/webapp/WEB-INF/sample/context/context-sample-orcl.xml</config>
+		<config>src/main/resources/common/context/context-log-common.xml</config>
+		<config>src/main/webapp/WEB-INF/common/context/context-log-common.xml</config>
+		<config>src/main/webapp/WEB-INF/common/context/context-common.xml</config>
+		<config>src/main/webapp/WEB-INF/sample/servlet/servlet-sample.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

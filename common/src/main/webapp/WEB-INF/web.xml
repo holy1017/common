@@ -85,4 +85,19 @@
 		<servlet-name>sample</servlet-name>
 		<url-pattern>/sample/*</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>lightboard</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/lightboard/servlet/servlet-*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>lightboard</servlet-name>
+		<url-pattern>/lightboard/*</url-pattern>
+	</servlet-mapping>
 </web-app>
