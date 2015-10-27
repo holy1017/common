@@ -10,16 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Bootstrap 101 Template</title>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/jquery.form.js"></script>
-<script src="http://malsup.github.io/jquery.form.js"></script>
-
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="/common/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="/common/css/bootstrap.min.css" rel="stylesheet"> -->
 <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="css/bootstrap.min.css" />" rel="stylesheet">
 
@@ -31,6 +25,47 @@
 <!--[if lt IE 9 ]>
   <link rel="stylesheet" href="ink-ie.min.css" type="text/css">
 <![endif]-->
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+<script src="js/jquery-1113.js"></script>
+<script src="js/jquery-1113.min.js"></script>
+<script src="<c:url value="js/jquery-1113.js" />"></script>
+<script src="<c:url value="js/jquery-1113.min.js" />"></script>
+
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.form.min.js"></script>
+<script src="<c:url value="js/jquery.form.js" />"></script>
+<script src="<c:url value="js/jquery.form.min.js" />"></script>
+
+<script src="js/common_fm.js"></script>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="<c:url value="js/bootstrap.js" />"></script>
+<script src="<c:url value="js/bootstrap.min.js" />"></script>
+
+<script src="js/foundation.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="<c:url value="js/foundation.js" />"></script>
+<script src="<c:url value="js/foundation.min.js" />"></script>
+
+<script src="js/ink-all.js"></script>
+<script src="js/ink-all.min.js"></script>
+<script src="<c:url value="js/ink-all.js" />"></script>
+<script src="<c:url value="js/ink-all.min.js" />"></script>
+
+<script src="js/ink-ui.js"></script>
+<script src="js/ink-ui.min.js"></script>
+<script src="<c:url value="js/ink-ui.js" />"></script>
+<script src="<c:url value="js/ink-ui.min.js" />"></script>
+
+
+<script src="http://malsup.github.io/jquery.form.js"></script>
+
 <script type="text/javascript"
 	src="http://fastly.ink.sapo.pt/3.1.10/js/ink-all.js"></script>
 <!-- inks js bundle -->
@@ -43,124 +78,72 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <script type="text/javascript">
-	$.ajax({
-		url : "session",
-		statusCode : {
-			404 : function() {
-				alert("page not found");
-			}
-		},
-		success : function(data) {
-			alert(data);
-			alert("${sessionScope.sessiontest}");
-			/* 아래 작동 안됨 */
-			/* alert( $.session.get("sessiontest") ); */
-		}
-	});
+	// 	$.ajax({
+	// 		url : "session",
+	// 		statusCode : {
+	// 			404 : function() {
+	// 				alert("page not found");
+	// 			}
+	// 		},
+	// 		success : function(data) {
+	// 			alert(data);
+	// 			alert("${sessionScope.sessiontest}");
+	// 			/* 아래 작동 안됨 */
+	// 			/* alert( $.session.get("sessiontest") ); */
+	// 		}
+	// 	});
 	$(function() {
-		$("#formbt").click(function() {
-			$("#formtest").attr({
-				"method" : "POST",
-				"action" : "formtest"
-			})
-			$("#formtest").submit()
+
+		$(".menu a").click(function() {
+			var url = $(this).attr("href")
+			//alert(url);
+			a_ajax(url, "#sampleresult")
+			return false
 		})
 	})
-	function sendIt() {
-		alert("sendIt")
-		$('#formdatatest').ajaxForm({
-			url : "formtest",
-			success : function(data, status) {
-				alert(status)
-				$('#bbsLayout').html(data);
+
+	function a_ajax(url, changeTag) {
+		$.ajax({
+			url : url,
+			statusCode : {
+				404 : function() {
+					alert("page not found");
+				}
 			},
-			error : function(e) {
-				alert(e.responseText);
+			success : function(data) {
+				$(changeTag).html(data)
+				//alert(data);
+				//alert("${sessionScope.sessiontest}");
+				/* 아래 작동 안됨 */
+				/* alert( $.session.get("sessiontest") ); */
 			}
 		})
-		alert("submit")
-		$('#formdatatest').submit();
+		return false
 	}
 </script>
 </head>
-<body>
+<body onload="a_ajax('Helloworld.jsp','#sampleresult')">
 	<nav class="ink-navigation">
 		<ul class="menu horizontal black">
-			<li><a href="ink">ink.jsp</a></li>
-			<li><a href="list">list.jsp</a></li>
-			<li><a href="main">main.jsp</a></li>
-			<li><a href="test">test.jsp</a></li>
+			<li><a href="Helloworld.jsp">Helloworld</a></li>
+			<li><a href="ink.jsp">ink</a></li>
+			<li><a href="list.jsp">list</a></li>
+			<li><a href="main.jsp">main</a></li>
+			<li><a href="test.jsp">test</a></li>
 			<li><a href="search/">search</a></li>
-			<li><a href="fileUpload">"fileUpload"</a></li>
+			<li><a href="ajaxform.jsp">ajaxform</a></li>
+			<li><a href="fileUpload.jsp">fileUpload</a></li>
+			<li><a href="RequsetParam" onclick="a_ajax('RequsetParam')">RequsetParam</a></li>
 		</ul>
 	</nav>
-	<h1>Hello, world!</h1>
-	<script type="text/javascript">
-		var now = new Date();
-		var nowAll = now.getFullYear() + "-" + (now.getMonth() + 1) + "-"
-				+ now.getDate() + " " + now.getHours() + ":" + now.getMinutes()
-				+ ":" + now.getSeconds() + " ";
-	</script>
-	<%-- 	<p>
-		<c:url value="css/bootstrap.min.css" />
-	</p>
-	<p>
-		<c:url value="/css/bootstrap.min.css" />
-	</p> --%>
+	
+	<div id="test">
+	<c:url value="js/jquery-1113.js" />
+	</div>
 
-	<form action="formtest">
-		<input type="text" name="test"> <input type="button"
-			id="formbt" value="전송테스트">
-	</form>
-	<form action="formdatatest" enctype="multipart/form-data">
-		<div>
-			<input type="file" name="file">
-		</div>
-		<div>
-			<input type="text" name="test">
-		</div>
-		<br>
-		<div>
-			<input type="button" id="formdatabt" onclick="sendIt()" value="전송테스트">
-		</div>
-	</form>
+	<div id="sampleresult">
+		<%@ include file="debug/debug.jsp"%>
+	</div>
 
-	<script type="text/javascript">
-	/* 이건 제대로 되는듯 */
-		$(function() {
-			//폼전송
-			$('#ajaxform').ajaxForm({
-				//보내기전 validation check가 필요할경우
-				beforeSubmit : function(data, frm, opt) {
-					alert("전송전!!"+"/data:"+data+"/frm:"+frm+"/opt:"+opt);
-					return true;
-				},
-				//submit이후의 처리
-				success : function(responseText, statusText) {
-					alert("전송성공!!"+"/responseText:"+responseText+"/statusText:"+statusText);
-				},
-				//ajax error
-				error : function() {
-					alert("에러발생!!");
-				}
-			});
-		});
-	</script>
-	<form id="ajaxform" action="formfiletest" method="post"
-		enctype="multipart/form-data">
-		<input type="text" name="test2" /><br />
-		<textarea rows="10" cols="10" name="test3"></textarea>
-		<br /> <input type="file" name="test4" /> <input type="submit"
-			value="Submit" />
-	</form>
-
-	<div id="bbsLayout"></div>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
-
-
-
-	<%@ include file="debug/debug.jsp"%>
 </body>
 </html>

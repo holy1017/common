@@ -32,9 +32,9 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/js/**" location="/bootstrap/js/" />
+<!-- 	<resources mapping="/js/**" location="/bootstrap/js/" />
 	<resources mapping="/fonts/**" location="/bootstrap/fonts/" />
-	<resources mapping="/css/**" location="/bootstrap/css/" />
+	<resources mapping="/css/**" location="/bootstrap/css/" /> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->

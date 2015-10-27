@@ -25,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,6 +42,7 @@ import common.common.CommandMap;
 // 이코드 넣을경우 http://localhost:8080/common/sample/sample/*
 // 이코드 없을경우 http://localhost:8080/common/sample/*
 // @RequestMapping("/sample/*")
+//@RequestMapping(method = RequestMethod.POST)
 public class SampleController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
@@ -88,7 +90,6 @@ public class SampleController {
 	public String RequsetParam(@RequestParam(value="id", required=false, defaultValue="-1") String id,HttpServletRequest req, @ModelAttribute("model_Attribute") CommonVO vo) {
 		req.setAttribute("id", id);
 		return "debug/debug";
-		// ...
 	}
 	
 /*	@RequestMapping(value = "/RequsetParam1")
@@ -277,7 +278,7 @@ public class SampleController {
 		return "form/" + jsp;
 	}
 
-	@RequestMapping(value = { "/{jsp}" })
+	@RequestMapping(value = { "/{jsp}.jsp" })
 	// @ResponseBody
 	public String jspor(@PathVariable String jsp) {
 		log.debug("/{jsp}:" + jsp);
@@ -312,13 +313,14 @@ public class SampleController {
 	@RequestMapping(value = { "/SHA256/{str}" })
 	@ResponseBody
 	public String SHA256(@PathVariable String str) {
+		log.debug("SHA256:"+str);
 		String SHA = "";
 		try {
 			MessageDigest sh = MessageDigest.getInstance("SHA-256");
 			sh.update(str.getBytes());
 			byte byteData[] = sh.digest();
 			SHA = new String(byteData, 0, byteData.length);
-			System.out.println(SHA);
+			//log.debug(SHA);
 			StringBuffer sb = new StringBuffer();
 			for (int i = 0; i < byteData.length; i++) {
 				sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));

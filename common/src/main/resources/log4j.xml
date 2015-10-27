@@ -31,12 +31,17 @@
 	</appender> -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p:%c:%m%n" />
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p %c %m%n" />
+		</layout>
+	</appender>
+	<appender name="console-springframework" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="springframework %5p %c{1} %m%n" />
 		</layout>
 	</appender>
 	<appender name="console-infolog" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p:%m%n" />
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p %m%n" />
 		</layout>
 	</appender>
 	<appender name="console-sql" class="org.apache.log4j.ConsoleAppender">
@@ -46,7 +51,7 @@
 	</appender>
 	<appender name="console-web" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%m%n" />
+			<param name="ConversionPattern" value="web %5p %c{1} %m%n" />
 		</layout>
 	</appender>
 	<!-- Application Loggers -->
@@ -77,15 +82,19 @@
 	<!---->
 	<logger name="org.springframework.core">
 		<level value="info" />
+		<appender-ref ref="console-springframework" />
 	</logger>
 	<logger name="org.springframework.beans">
 		<level value="info" />
+		<appender-ref ref="console-springframework" />
 	</logger>
 	<logger name="org.springframework.context">
 		<level value="info" />
+		<appender-ref ref="console-springframework" />
 	</logger>
 	<logger name="org.springframework.web">
 		<level value="info" />
+		<appender-ref ref="console-web" />
 	</logger>
 	<!-- 	<logger name="org.springframework.core">
 	<level value="info" />
@@ -107,9 +116,9 @@
 	<appender-ref ref="console" />
 	</root>
 	-->
-	<root>
+<!-- 	<root>
 		<priority value="off"/>
-		<!-- 	<priority value="info" /> -->
+			<priority value="info" />
 		<appender-ref ref="console" />
-	</root>
+	</root> -->
 </log4j:configuration>

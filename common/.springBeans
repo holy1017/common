@@ -8,13 +8,15 @@
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 		<config>src/main/webapp/WEB-INF/common/context/context-orcl-test.xml</config>
+		<config>src/main/webapp/WEB-INF/context/context-sample.xml</config>
+		<config>src/main/webapp/WEB-INF/context/context-board-orcl.xml</config>
+		<config>src/main/webapp/WEB-INF/context/context-sample-orcl.xml</config>
 	</configs>
 	<autoconfigs>
-		<config>src/main/webapp/WEB-INF/sample/context/context-board-orcl.xml</config>
 		<config>src/main/webapp/WEB-INF/common/servlet/servlet-common.xml</config>
 		<config>src/main/webapp/WEB-INF/lightboard/servlet/servlet-defult.xml</config>
+		<config>src/main/resources/sample/sql/sql-SampleUser.xml</config>
 		<config>src/main/webapp/WEB-INF/servlet/servlet-defult.xml</config>
-		<config>src/main/webapp/WEB-INF/sample/context/context-sample-orcl.xml</config>
 		<config>src/main/resources/common/context/context-log-common.xml</config>
 		<config>src/main/webapp/WEB-INF/common/context/context-log-common.xml</config>
 		<config>src/main/webapp/WEB-INF/common/context/context-common.xml</config>
