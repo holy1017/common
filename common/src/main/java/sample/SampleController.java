@@ -25,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -75,6 +76,29 @@ public class SampleController {
 
 		return "sample";
 	}
+	
+	/**
+	 * http://localhost:8080/common/sample/RequsetParam
+	 * @param id
+	 * @param req
+	 * @param vo
+	 * @return
+	 */
+	@RequestMapping(value = "/RequsetParam")
+	public String RequsetParam(@RequestParam(value="id", required=false, defaultValue="-1") String id,HttpServletRequest req, @ModelAttribute("model_Attribute") CommonVO vo) {
+		req.setAttribute("id", id);
+		return "debug/debug";
+		// ...
+	}
+	
+/*	@RequestMapping(value = "/RequsetParam1")
+	public String RequsetParam1(@RequestParam<String, String> params,HttpServletRequest req, @ModelAttribute("model_Attribute") CommonVO vo) {
+		req.setAttribute("id", id);
+		return "debug/debug";
+		// ...
+	}
+*/
+	
 
 	/**
 	 * http://localhost:8080/common/sample/path/7BuserId7D/main.action
